@@ -6,14 +6,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - shell: bash
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      run: |
-        git clone https://github.com/raspberrypi/pico-sdk.git --branch master
-        cd pico-sdk
-        git submodule update --init
-        cd ..
-        ls
+      - name: Install
+        run: |
+          git clone https://github.com/raspberrypi/pico-sdk.git --branch master
+          cd pico-sdk
+          git submodule update --init
+          cd ..
+          ls
 
-        sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential
+          sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential
