@@ -2,6 +2,28 @@ name: build
 on: push
 
 jobs:
-  tests:
+  build:
     runs-on: ubuntu-latest
-    
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install
+        run: |
+          git clone https://github.com/raspberrypi/pico-sdk.git --branch master
+          cd pico-sdk
+          git submodule update --init
+          cd ..
+          ls
+          sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          export PICO_SDK_PATH=/home/runner/work/weather_station_v2/weather_station_v2/pico-sdk
+          cmake -DCMAKE_BUILD_TYPE=Debug -DPICO_BOARD=pico_w ..
+          make -j10
+
+
