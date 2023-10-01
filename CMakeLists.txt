@@ -23,7 +23,7 @@ pico_sdk_init()
 
 
 add_executable(${PROJECT_NAME} 
-        main.c
+        source/main.c
         )
 
 target_link_libraries(${PROJECT_NAME} 
