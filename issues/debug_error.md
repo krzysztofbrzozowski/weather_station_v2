@@ -1,39 +1,29 @@
-Weather station - version 2 based on RPI2040
-## Requirements
-- Station is based on RPI2040 uC -> for dev purposes RPi Pico will be used
-- Station is powered by 3.7V battery
-- Station uses SIM800 or other GPRS module to send or receive data
-- Station can use WiFi module to send or receive data
-- Station is updated via micro-USB port
-- Station supports OTA updates
+### Problem:
+Unable to run picoprobe debugger in VS Studio Code on MacOS. Below error is shown
+```
+Failed to launch OpenOCD GDB Server
+```
 
-## TODO
-- [x] Set up CI to build project
-- [x]xSet up debugging locally
-- Connect RPi Pico into prototype board
-- Connect to WiFi and get iot server time printed via e.g. UART
+## #Analysis:
+- Manually running openocd working
+```
+./openocd -c "gdb_port 50000" -c "tcl_port 50001" -c "telnet_port 50002" -s /Users/krzysztofbrzozowski/Tools/openocd/tcl -f /Users/krzysztofbrzozowski/.vscode/extensions/marus25.cortex-debug-1.12.1/support/openocd-helpers.tcl -f /Users/krzysztofbrzozowski/Tools/openocd/tcl/interface/cmsis-dap.cfg -f /Users/krzysztofbrzozowski/Tools/openocd/tcl/target/rp2040.cfg -c "adapter speed 5000"
+```
+- OpenOCD is not able to start from Cortex-Debug extention in VS Studio Code
+- Downloaded old branch from GitHub of OpenOCD 
 
-## Steps after download
-- Build OpenOCD (If you using MacOS you can use below commands)
-```console
-<!-- skip if have brew installed -->
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-<!-- Install tools to build OpenOCD -->
-$ brew install libtool automake libusb wget pkg-config gcc texinfo
-
-<!-- Clone and build OpenOCD -->
+### Solution:
+- Download latest branch with OpenOCD from GitHub and build it
+```
 $ git clone https://github.com/raspberrypi/openocd.git --branch rp2040-v0.12.0 --recursive --depth=1
 $ cd openocd
 $ ./bootstrap
 $ ./configure --disable-werror
 $ make -j4
-
-<!-- Install GDB -->
-$ brew install gdb
 ```
-- Set up .vscode folder with correct options and paths
-Configure launch.json with 
+
+- Configure launch.json with 
 ```json
 "serverpath": "...",
 "searchDir": ["..."],
