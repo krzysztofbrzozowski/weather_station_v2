@@ -9,7 +9,8 @@ Weather station - version 2 based on RPI2040
 
 ## TODO
 - [x] Set up CI to build project
-- [x]xSet up debugging locally
+- [x] Set up debugging locally
+![rp2040_debug_view_vscode.png](https://krzysztofbrzozowski.com/media/2023/10/04/rp2040_debug_view_vscode.png)
 - Connect RPi Pico into prototype board
 - Connect to WiFi and get iot server time printed via e.g. UART
 
