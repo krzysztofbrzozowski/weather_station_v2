@@ -7,5 +7,10 @@
 			"path": "../../rpi_pico.nosync/pico-examples"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"unique_id.h": "c",
+			"cyw43_ll.h": "c"
+		}
+	}
 }

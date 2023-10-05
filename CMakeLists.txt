@@ -26,6 +26,16 @@ add_executable(${PROJECT_NAME}
         source/main.c
         )
 
+cmake_print_variables(CMAKE_CURRENT_LIST_DIR)
+target_include_directories(${PROJECT_NAME} PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}/wifi/header
+        ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
+        )
+
+set(SOURCES
+        ${CMAKE_CURRENT_LIST_DIR}/wifi/source/scan_wifi.c
+)
+
 target_link_libraries(${PROJECT_NAME} 
         pico_stdlib            
         pico_cyw43_arch_none 
