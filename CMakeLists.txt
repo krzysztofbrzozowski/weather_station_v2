@@ -28,7 +28,8 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} 
         pico_stdlib            
-        pico_cyw43_arch_none     
+        pico_cyw43_arch_none 
+        hardware_uart  
         )
 
 # create map/bin/hex file etc.

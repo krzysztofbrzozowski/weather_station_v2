@@ -11,7 +11,8 @@ Weather station - version 2 based on RPI2040
 - [x] Set up CI to build project
 - [x] Set up debugging locally
 ![rp2040_debug_view_vscode.png](https://krzysztofbrzozowski.com/media/2023/10/04/rp2040_debug_view_vscode.png)
-- Connect RPi Pico into prototype board
+- [x] Connect RPi Pico into prototype board
+- [x] Run UART
 - Connect to WiFi and get iot server time printed via e.g. UART
 
 ## Steps after download
@@ -32,6 +33,10 @@ $ make -j4
 
 <!-- Install GDB -->
 $ brew install gdb
+<!-- Install minicom -->
+$ brew install minicom
+<!-- run minicom -->
+minicom -b 115200 -o -D /dev/cu.usbmodem1423402
 ```
 - Set up .vscode folder with correct options and paths
 Configure launch.json with 
@@ -98,3 +103,4 @@ Example of settings.json:
     "cortex-debug.openocdPath": "/Users/krzysztofbrzozowski/Tools/openocd/src/openocd"
 }
 ```
+
