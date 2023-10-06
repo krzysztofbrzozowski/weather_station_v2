@@ -14,7 +14,8 @@
 		"files.associations": {
 			"unique_id.h": "c",
 			"cyw43_ll.h": "c",
-			"scan_wifi.h": "c"
+			"scan_wifi.h": "c",
+			"vreg.h": "c"
 		}
 	}
 }

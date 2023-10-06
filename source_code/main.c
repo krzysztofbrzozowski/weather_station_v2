@@ -15,14 +15,7 @@
 
 int main() {
     /* Start WiFi init */
-    stdio_init_all();
-
-    if (cyw43_arch_init()) {
-        printf("Failed to initialise WiFi\n");
-        return -1;
-    }
-    
-    cyw43_arch_enable_sta_mode();
+    wifi_init();
     /* End WiFi init */
     /* Start UART init */
     uart_init(UART_ID, BAUD_RATE);
@@ -30,8 +23,6 @@ int main() {
     gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
     gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
     /* End UART init */
-
-
 
     while (true) {
         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);

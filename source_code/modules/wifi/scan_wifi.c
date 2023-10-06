@@ -1,7 +1,7 @@
 #include "scan_wifi.h"
 
-absolute_time_t scan_time = nil_time;
-scan_in_progress = false;
+static bool scan_in_progress = false;
+absolute_time_t scan_time;
 
 static int scan_result(void *env, const cyw43_ev_scan_result_t *result) {
     if (result) {
@@ -11,6 +11,18 @@ static int scan_result(void *env, const cyw43_ev_scan_result_t *result) {
             result->auth_mode);
     }
     return 0;
+}
+
+bool wifi_init(void) {
+    stdio_init_all();
+
+    if (cyw43_arch_init()) {
+        printf("failed to initialise\n");
+        return 1;
+    }
+
+    cyw43_arch_enable_sta_mode();
+    scan_time = nil_time;
 }
 
 
