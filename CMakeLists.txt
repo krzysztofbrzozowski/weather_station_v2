@@ -7,7 +7,7 @@ cmake_print_variables(PICO_SDK_PATH)
 include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
 
 # Set name of project (as PROJECT_NAME) and C/C   standards
-project(blink C CXX ASM)
+project(weather_station_v2 C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -23,17 +23,39 @@ pico_sdk_init()
 
 
 add_executable(${PROJECT_NAME} 
-        source/main.c
+        source_code/main.c
         )
 
-target_link_libraries(${PROJECT_NAME} 
+# cmake_print_variables(CMAKE_CURRENT_LIST_DIR)
+# target_include_directories(${PROJECT_NAME} PRIVATE
+#         ${CMAKE_CURRENT_LIST_DIR}/wifi/header
+#         ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
+#         )
+
+# set(SOURCES
+#         ${CMAKE_CURRENT_LIST_DIR}/wifi/source/scan_wifi.c
+# )
+
+target_link_libraries(${PROJECT_NAME}
         pico_stdlib            
         pico_cyw43_arch_none 
-        hardware_uart  
+        hardware_uart
+        sub::wifi
         )
 
-# create map/bin/hex file etc.
+# Create map/bin/hex file etc.
 pico_add_extra_outputs(${PROJECT_NAME})
 
 pico_enable_stdio_usb(${PROJECT_NAME} 0)
 pico_enable_stdio_uart(${PROJECT_NAME} 1)
+
+# Subdirs
+add_subdirectory(source_code)
+# TODO is this correct?
+# add_subdirectory(source_code/modules)
+# add_subdirectory(source_code/modules/adc)
+# add_subdirectory(source_code/modules/sim800)
+# add_subdirectory(source_code/modules/wifi)
+
+
+

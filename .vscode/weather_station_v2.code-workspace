@@ -5,7 +5,17 @@
 		},
 		{
 			"path": "../../rpi_pico.nosync/pico-examples"
+		},
+		{
+			"path": "../../rpi_pico.nosync/pico-sdk"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"unique_id.h": "c",
+			"cyw43_ll.h": "c",
+			"scan_wifi.h": "c",
+			"vreg.h": "c"
+		}
+	}
 }
