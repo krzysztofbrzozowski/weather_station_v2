@@ -26,19 +26,9 @@ add_executable(${PROJECT_NAME}
         source_code/main.c
         )
 
-# cmake_print_variables(CMAKE_CURRENT_LIST_DIR)
-# target_include_directories(${PROJECT_NAME} PRIVATE
-#         ${CMAKE_CURRENT_LIST_DIR}/wifi/header
-#         ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
-#         )
-
-# set(SOURCES
-#         ${CMAKE_CURRENT_LIST_DIR}/wifi/source/scan_wifi.c
-# )
-
 target_link_libraries(${PROJECT_NAME}
         pico_stdlib            
-        pico_cyw43_arch_none 
+        # pico_cyw43_arch_none
         hardware_uart
         sub::wifi
         )
@@ -51,11 +41,5 @@ pico_enable_stdio_uart(${PROJECT_NAME} 1)
 
 # Subdirs
 add_subdirectory(source_code)
-# TODO is this correct?
-# add_subdirectory(source_code/modules)
-# add_subdirectory(source_code/modules/adc)
-# add_subdirectory(source_code/modules/sim800)
-# add_subdirectory(source_code/modules/wifi)
-
 
 
