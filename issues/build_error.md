@@ -1,4 +1,4 @@
-PROBLEM:
+### PROBLEM:
 ```
 CMake Error at /usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeTestCCompiler.cmake:67 (message):
   The C compiler
@@ -23,7 +23,7 @@ CMake Error at /usr/local/Cellar/cmake/3.27.5/share/cmake/Modules/CMakeTestCComp
     make[1]: *** [cmTC_336e5] Error 1
     make: *** [cmTC_336e5/fast] Error 2
 ```
-SOLUTION:
+### SOLUTION:
 Download fresh SDK + optionally examples
 ```
     git clone https://github.com/raspberrypi/pico-sdk.git
