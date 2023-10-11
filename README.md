@@ -13,6 +13,7 @@ Weather station - version 2 based on RPI2040
 ![rp2040_debug_view_vscode.png](https://krzysztofbrzozowski.com/media/2023/10/04/rp2040_debug_view_vscode.png)
 - [x] Connect RPi Pico into prototype board
 - [x] Run UART
+- [X] Run sample code to scan WiFi networks
 - Connect to WiFi and get iot server time printed via e.g. UART
 
 ## Steps after download

@@ -4,7 +4,7 @@ Unable to run picoprobe debugger in VS Studio Code on MacOS. Below error is show
 Failed to launch OpenOCD GDB Server
 ```
 
-## #Analysis:
+### Analysis:
 - Manually running openocd working
 ```
 ./openocd -c "gdb_port 50000" -c "tcl_port 50001" -c "telnet_port 50002" -s /Users/krzysztofbrzozowski/Tools/openocd/tcl -f /Users/krzysztofbrzozowski/.vscode/extensions/marus25.cortex-debug-1.12.1/support/openocd-helpers.tcl -f /Users/krzysztofbrzozowski/Tools/openocd/tcl/interface/cmsis-dap.cfg -f /Users/krzysztofbrzozowski/Tools/openocd/tcl/target/rp2040.cfg -c "adapter speed 5000"
