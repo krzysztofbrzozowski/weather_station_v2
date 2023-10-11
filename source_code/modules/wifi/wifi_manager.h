@@ -7,9 +7,6 @@
 #include "hardware/vreg.h"
 #include "hardware/clocks.h"
 
-// absolute_time_t scan_time;
-// extern bool scan_in_progress;
-
 extern return_type wifi_scan(void);
 extern return_type wifi_init(void);
 

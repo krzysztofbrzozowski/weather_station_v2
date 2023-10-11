@@ -12,10 +12,13 @@ target_link_libraries(${PROJECT_NAME}
         hardware_pio
         pico_stdlib
         pico_cyw43_arch_lwip_poll
+        sub::misc
         # pico_cyw43_arch_lwip_threadsafe_background
         )
 
 target_include_directories( ${PROJECT_NAME} PUBLIC
     ${PROJECT_SOURCE_DIR}/wifi
-    # ${CMAKE_CURRENT_LIST_DIR}
+    ${PROJECT_SOURCE_DIR}../..
+    ${PROJECT_SOURCE_DIR}../../..
+    ${PROJECT_SOURCE_DIR}../../../misc
 )

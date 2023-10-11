@@ -31,6 +31,7 @@ target_link_libraries(${PROJECT_NAME}
         # pico_cyw43_arch_none
         hardware_uart
         sub::wifi
+        sub::misc
         )
 
 # Create map/bin/hex file etc.

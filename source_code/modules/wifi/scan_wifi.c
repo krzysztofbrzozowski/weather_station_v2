@@ -13,20 +13,22 @@ static int scan_result(void *env, const cyw43_ev_scan_result_t *result) {
     return 0;
 }
 
-bool wifi_init(void) {
+return_type wifi_init(void) {
     stdio_init_all();
 
     if (cyw43_arch_init()) {
         printf("failed to initialise\n");
-        return 1;
+        return NOK;
     }
 
     cyw43_arch_enable_sta_mode();
     scan_time = nil_time;
+
+    return OK;
 }
 
 
-int wifi_scan(void) {
+return_type wifi_scan(void) {
     if (absolute_time_diff_us(get_absolute_time(), scan_time) < 0) {
         if (!scan_in_progress) {
             cyw43_wifi_scan_options_t scan_options = {0};
@@ -37,6 +39,7 @@ int wifi_scan(void) {
             } else {
                 printf("Failed to start scan: %d\n", err);
                 scan_time = make_timeout_time_ms(10000); // wait 10s and scan again
+                return NOK;
             }
         } else if (!cyw43_wifi_scan_active(&cyw43_state)) {
             scan_time = make_timeout_time_ms(10000); // wait 10s and scan again
@@ -59,5 +62,5 @@ int wifi_scan(void) {
         sleep_ms(1000);
 #endif
 
-    return 0;
+    return OK;
 }
